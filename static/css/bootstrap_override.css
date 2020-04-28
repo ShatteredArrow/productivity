@@ -1,0 +1,11 @@
+.bg-secondary {
+    background-color: #313940!important;
+  }
+
+.bg-dark {
+    background-color: #24272b!important;
+  }
+
+h1, h2, h3, h4, h5, h6, p {
+    color: #fff
+}
