@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Milestones{% endblock %}
+{% block body_container %}
+<div class="container">
+    <h1>Milestones</h1>
+    {% if milestones %}
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">targetDate</th>
+            <th scope="col">startedDate</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for milestone in milestones %}
+          <tr>
+            <th scope="row">{{ milestone.id }}</th>
+            <td>{{ milestone.name }}</td>
+            <td>{{ milestone.targetDate}}</td>
+            <td>{{ milestone.startedDate}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+</div>
+{% endblock %}

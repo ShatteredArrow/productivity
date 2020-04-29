@@ -1,9 +1,8 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort,url_for
 import os
-
-#from flask_login import login_user, current_user, logout_user, login_required #Optional login imports, need to 'pip install flask_login'
-
-app = Flask(__name__)
+from app.models import Timesheet, Milestone, Category
+from app import app, db
+from app import Config
 
 @app.route('/')
 @app.route('/home')
@@ -12,11 +11,13 @@ def index():
 
 @app.route('/timesheets')
 def timesheets():
-  return render_template("timesheets.html", title="timesheets")
+  timesheets = Timesheet.query.all()
+  return render_template("timesheets.html", title="timesheets", timesheets=timesheets)
 
 @app.route('/milestones')
 def milestones():
-  return render_template("milestones.html")
+  milestones = Milestone.query.all()
+  return render_template("milestones.html", milestones=milestones)
 
 
 if __name__ == '__main__':
