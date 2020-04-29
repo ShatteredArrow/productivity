@@ -3,6 +3,7 @@ import os
 from app.models import Timesheet, Milestone, Category
 from app import app, db
 from app import Config
+from app.forms import AddMilestone
 
 @app.route('/')
 @app.route('/home')
@@ -16,8 +17,9 @@ def timesheets():
 
 @app.route('/milestones')
 def milestones():
+  addMilestoneForm = AddMilestone()
   milestones = Milestone.query.all()
-  return render_template("milestones.html", milestones=milestones)
+  return render_template("milestones.html", milestones=milestones, addMilestoneForm=addMilestoneForm)
 
 
 if __name__ == '__main__':

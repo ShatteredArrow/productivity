@@ -1,7 +1,50 @@
 {% extends "base.html" %}
 {% block title %}Milestones{% endblock %}
 {% block body_container %}
+<!-- add milestone modal -->
+<div class="modal fade add-milestone" tabindex="-1" role="dialog" aria-labelledby="addMilestone" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h2 class="modal-title">Add Milestone</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" enctype="multipart/form-data">
+          {{ addMilestoneForm.hidden_tag() }}
+          <div class="form-group">
+            {{ addMilestoneForm.name.label }}
+            {{ addMilestoneForm.name (class="form-control") }}
+          </div>
+          <div class="form-group">
+            {{ addMilestoneForm.targetDate.label }}
+            {{ addMilestoneForm.targetDate (class="form-control") }}
+          </div>
+          <div class="form-group">
+            {{ addMilestoneForm.startedDate.label }}
+            {{ addMilestoneForm.startedDate (class="form-control") }}
+          </div>
+          <div class="form-group">
+            {{ addMilestoneForm.completedDate.label }}
+            {{ addMilestoneForm.completedDate (class="form-control") }}
+          </div>
+          <div class="form-group">
+            {{ addMilestoneForm.link.label }}
+            {{ addMilestoneForm.link (class="form-control") }}
+          </div>
+          <div class="form-group">
+            {{ addMilestoneForm.note.label }}
+            {{ addMilestoneForm.note (class="form-control") }}
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".add-milestone">Add Milestone</button>
+
     <h1>Milestones</h1>
     {% if milestones %}
     <table class="table table-dark">
