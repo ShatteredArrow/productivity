@@ -5,12 +5,14 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextA
 from wtforms.validators import DataRequired, Regexp
 from flask_wtf.file import FileRequired
 from wtforms import SelectField, SelectMultipleField, FileField,DateTimeField
-from app.models import Timesheet
+from app.models import Timesheet,Milestone
 
-class AddMilestone(FlaskForm):
-    name = StringField('Milestone', validators=[DataRequired()])
-    targetDate = DateTimeField('Target Date')
-    startedDate = DateTimeField('Started Date')
-    completedDate = DateTimeField('Completed Date')
-    link = StringField('Link')
-    note = TextAreaField('Notes')
+
+#Import statements for autogenerating forms from models
+from wtforms_alchemy import ModelForm,model_form_factory 
+ModelForm = model_form_factory(FlaskForm)
+
+
+class AddMilestoneForm(ModelForm):
+    class Meta:
+        model = Milestone
