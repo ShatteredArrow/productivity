@@ -36,3 +36,9 @@ def milestones():
 if __name__ == '__main__':
 	app.secret_key = os.urandom(12)
 	app.run(debug=True)
+
+
+#Attach a milestone to a timesheet
+#many timesheets can be attached to one milestone
+
+#Each event have many locations == Each milestone can have many timesheets

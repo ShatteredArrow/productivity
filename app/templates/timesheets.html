@@ -31,6 +31,10 @@
               {{ addTimesheetForm.notes (class="form-control") }}
             </div>
             <div class="form-group">
+              {{ addTimesheetForm.milestone.label }}
+              {{ addTimesheetForm.milestone (class="form-control") }}
+            </div>
+            <div class="form-group">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
             {% if addTimesheetForm.errors %}

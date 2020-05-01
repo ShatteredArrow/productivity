@@ -13,7 +13,8 @@ class Milestone(db.Model):
     completedDate = db.Column(db.Date)
     link  = db.Column(db.String(128))
     note = db.Column(db.String(254))
-    # timesheets = db.relationship("Timesheet", backref="milestone", lazy=True)
+    timesheets = db.relationship("Timesheet", backref="milestones", lazy=True)
+    
     categories = db.relationship('Category', secondary=milestoneCategories, lazy='subquery',
         backref=db.backref('milestones', lazy=True))
 
@@ -43,8 +44,8 @@ class Timesheet(db.Model):
     timeSpent = db.Column(db.Integer)
     enjoyment = db.Column(db.Integer)
     notes = db.Column(db.String(254))
-    milestone_id = db.Column(db.Integer, db.ForeignKey("Milestone.id"))
-    milestone = db.relationship("Milestone", backref='timesheets')
+    milestone_id = db.Column(db.Integer, db.ForeignKey("milestone.id"))
+    milestone = db.relationship("Milestone", backref='timesheetss')
 
     def addTimesheet(self, formDict):
         for key, value in formDict.items():
