@@ -8,13 +8,12 @@ ModelForm = model_form_factory(FlaskForm)
 from wtforms.fields import FormField
 
 
-
-class AddTimesheetForm(ModelForm):
-    class Meta:
-        model = Timesheet
-
 class AddMilestoneForm(ModelForm):
     class Meta:
         model = Milestone
     
-    timesheetss = ModelFieldList(FormField(AddTimesheetForm))
+
+class AddTimesheetForm(ModelForm):
+    class Meta:
+        model = Timesheet
+    milestone = ModelFieldList(FormField(AddMilestoneForm))
